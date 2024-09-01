@@ -1,10 +1,10 @@
-FROM python:3.10.5 AS compile-image
+FROM python:3.12 AS compile-image
 
-RUN pip install --no-cache-dir telethon cryptg==0.2 pysocks
+RUN pip install --no-cache-dir telethon cryptg pysocks
 
-FROM python:3.10.5-slim AS run-image
+FROM python:3.12 AS run-image
 
-COPY --from=compile-image /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY --from=compile-image /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 
 WORKDIR /app
 COPY *.py ./

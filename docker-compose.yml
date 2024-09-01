@@ -1,23 +1,22 @@
-version: '3.5'
-
+version: "4"
 services:
-  telegram-download-daemon:
-    #build: .
-    image: alfem/telegram-download-daemon:latest
-    container_name: telegram-download
+  telegram-download-daemon-radarr-sonarr:
+    image: docker.io/randomg1/telegram-download-daemon-radarr-sonarr:latest
+    container_name: telegram-download-daemon-radarr-sonarr
     read_only: true
     environment:
-      TELEGRAM_DAEMON_API_ID: "YOUR API ID HERE"
-      TELEGRAM_DAEMON_API_HASH: "YOUR API HASH HERE"
-      TELEGRAM_DAEMON_CHANNEL: "YOUR CHANNEL ID HERE"
-      TELEGRAM_DAEMON_DEST: "/downloads"
+      TELEGRAM_DAEMON_API_ID: "api_id"
+      TELEGRAM_DAEMON_API_HASH: "api_hash"
+      TELEGRAM_DAEMON_CHANNEL: "channel_id"
+      TELEGRAM_DAEMON_TEMP: "/downloads"
+      TELEGRAM_DAEMON_MOVIES_DEST: "/movies"
+      TELEGRAM_DAEMON_TVSHOWS_DEST: "/tvshows"
       TELEGRAM_DAEMON_SESSION_PATH: "/session"
-      #TELEGRAM_DAEMON_WORKERS: 2
+      TELEGRAM_DAEMON_DUPLICATES: "ignore"
+      TELEGRAM_DAEMON_WORKERS: 7
     volumes:
-       - downloads:/downloads
-       - sessions:/session
+      - ${MEDIA_DIRECTORY}/downloads:/downloads
+      - ${MEDIA_DIRECTORY}/movies:/movies
+      - ${MEDIA_DIRECTORY}/tvshows:/tvshows
+      - ${MEDIA_DIRECTORY}/sessions:/session
     restart: unless-stopped
-
-volumes:
-    downloads:
-    sessions:
