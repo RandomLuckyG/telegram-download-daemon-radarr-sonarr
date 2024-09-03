@@ -2,7 +2,7 @@
 
 A Telegram Daemon (not a bot) for file downloading automation for channels of which you have admin privileges Into Radarr and Sonarr Media Files.
 
-Telegram bots are limited to 20Mb file size downloads. So this agent or daemon allow bigger downloads (limited to 2GB by Telegram APIs).
+Telegram bots are limited to 20Mb file size downloads. So this agent or daemon allow bigger downloads.
 
 Download Movies And TV Shows From Telegram Straight into Radarr/ Sonnar Media Folders
 
